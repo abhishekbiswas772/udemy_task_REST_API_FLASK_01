@@ -55,6 +55,15 @@ class CarView(MethodView):
                 "message" : "Page Not Found"
             })
 
+        sort_order = request.args.get('sort_order', 'asc')
+        sort_by = request.args.get('sort_by')
+        if sort_by is not None:
+            sort_attr = getattr(CarModel, sort_by, None)
+            if sort_order == "desc":
+                query = query.order_by(sort_attr.desc())
+            else:
+                query = query.order_by(sort_attr.asc())
+
         cars_data_paginate = query.paginate(page=page_request, per_page=size_request, error_out=False)
         cars_schema = CarsSchema(many=True)
         result = cars_schema.dump(cars_data_paginate.items)
