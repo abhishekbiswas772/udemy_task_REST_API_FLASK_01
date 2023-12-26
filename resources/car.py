@@ -74,6 +74,7 @@ class CarView(MethodView):
             "page": page_request
         }), 200
     
+    
     @blp.arguments(CarsSchema)
     @blp.response(201, CarsSchema)
     def post(self, car_model_data):
