@@ -44,10 +44,7 @@ class CarView(MethodView):
             query = query.filter(
                 CarModel.price <= price_max
             )
-
-        sort_order = request.args.get('sort_order', 'asc')
-        sort_by = request.args.get('sort_by')
-
+            
         #pagination API Implementation
         page_request = request.args.get('page', DEFAULT_PAGE, type=int)
         size_request = request.args.get('size', DEFAULT_SIZE, type=int)
