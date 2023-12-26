@@ -1,0 +1,7 @@
+flask_smorest
+flask
+SQLAlchemy
+Flask-SQLAlchemy
+python_dotenv
+flask_migrate
+requests
