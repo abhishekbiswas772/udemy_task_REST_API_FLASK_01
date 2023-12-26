@@ -44,7 +44,7 @@ class CarView(MethodView):
             query = query.filter(
                 CarModel.price <= price_max
             )
-            
+
         #pagination API Implementation
         page_request = request.args.get('page', DEFAULT_PAGE, type=int)
         size_request = request.args.get('size', DEFAULT_SIZE, type=int)
@@ -54,6 +54,7 @@ class CarView(MethodView):
             abort(400, message = {
                 "message" : "Page Not Found"
             })
+
         cars_data_paginate = query.paginate(page=page_request, per_page=size_request, error_out=False)
         cars_schema = CarsSchema(many=True)
         result = cars_schema.dump(cars_data_paginate.items)
@@ -91,4 +92,3 @@ class CarView(MethodView):
                 }
             )
         return car_data
-        
