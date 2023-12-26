@@ -118,5 +118,7 @@ known_faces/
 .carsEnv/
 .env/
 flaskenv
+instance
+migrations
 
 
